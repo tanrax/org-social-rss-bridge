@@ -1,0 +1,14 @@
+services:
+  rss-bridge:
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      - RSS_FEED_URL=${RSS_FEED_URL:-https://xkcd.com/rss.xml}
+      - NICK=${NICK:-rss-bridge}
+      - TITLE=${TITLE:-RSS Bridge}
+      - DESCRIPTION=${DESCRIPTION:-RSS to Org Social bridge}
+      - AVATAR=${AVATAR:-}
+      - CONTACT=${CONTACT:-}
+      - LANG=${LANG:-en}
+    restart: unless-stopped

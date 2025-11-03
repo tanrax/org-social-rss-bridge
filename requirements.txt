@@ -1,0 +1,4 @@
+Flask==3.0.0
+feedparser==6.0.11
+html2text==2024.2.26
+gunicorn==21.2.0
