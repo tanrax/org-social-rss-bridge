@@ -5,6 +5,8 @@ import feedparser
 from datetime import datetime
 from html2text import html2text
 import re
+import urllib.request
+import xml.etree.ElementTree as ET
 
 app = Flask(__name__)
 
@@ -61,8 +63,12 @@ def parse_rss_to_org(feed_url):
     # Parse the feed
     feed = feedparser.parse(feed_url)
 
-    if feed.bozo and not feed.entries:
-        return f"Error parsing feed: {feed.bozo_exception if hasattr(feed, 'bozo_exception') else 'Unknown error'}"
+    # Check if feed has entries
+    if not feed.entries:
+        error_msg = f"No entries found in feed. This might be due to an unsupported feed format."
+        if feed.bozo and hasattr(feed, 'bozo_exception'):
+            error_msg += f" Parser error: {feed.bozo_exception}"
+        return error_msg
 
     # Build the Org Social file
     org_content = []
@@ -89,8 +95,8 @@ def parse_rss_to_org(feed_url):
     org_content.append("* Posts")
     org_content.append("")
 
-    # Process each entry
-    for entry in feed.entries:
+    # Process each entry (reverse order: oldest to newest)
+    for entry in reversed(feed.entries):
         org_content.append("**")
         org_content.append(":PROPERTIES:")
 
