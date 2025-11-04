@@ -15,6 +15,8 @@ DESCRIPTION = os.getenv('DESCRIPTION', 'RSS to Org Social bridge')
 AVATAR = os.getenv('AVATAR', '')
 CONTACT = os.getenv('CONTACT', '')
 LANG = os.getenv('LANG', 'en')
+PORT = int(os.getenv('PORT', '5000'))
+DEBUG = os.getenv('DEBUG', 'false').lower() in ('true', '1', 'yes')
 
 
 def html_to_org(html_content):
@@ -152,4 +154,4 @@ def health():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(host='0.0.0.0', port=PORT, debug=DEBUG)

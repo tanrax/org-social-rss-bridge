@@ -2,13 +2,15 @@ services:
   rss-bridge:
     build: .
     ports:
-      - "5000:5000"
+      - "${PORT:-5000}:${PORT:-5000}"
     environment:
-      - RSS_FEED_URL=${RSS_FEED_URL:-https://xkcd.com/rss.xml}
-      - NICK=${NICK:-rss-bridge}
-      - TITLE=${TITLE:-RSS Bridge}
-      - DESCRIPTION=${DESCRIPTION:-RSS to Org Social bridge}
+      - RSS_FEED_URL=${RSS_FEED_URL:-https://blog.orgmode.org/feed.xml}
+      - NICK=${NICK:-org-mode-blog}
+      - TITLE=${TITLE:-Org Mode Blog}
+      - DESCRIPTION=${DESCRIPTION:-Official Org Mode blog RSS feed}
       - AVATAR=${AVATAR:-}
       - CONTACT=${CONTACT:-}
       - LANG=${LANG:-en}
+      - PORT=${PORT:-5000}
+      - DEBUG=${DEBUG:-false}
     restart: unless-stopped

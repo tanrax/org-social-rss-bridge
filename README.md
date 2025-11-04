@@ -18,13 +18,15 @@ cp .env.example .env
 
 3. Edit `.env` with your RSS feed URL and profile settings:
 ```bash
-RSS_FEED_URL=https://xkcd.com/rss.xml
-NICK=my-rss-feed
-TITLE=My RSS Feed
-DESCRIPTION=My favorite RSS feed in Org Social format
-AVATAR=https://example.com/avatar.png
-CONTACT=me@example.com
+RSS_FEED_URL=https://blog.orgmode.org/feed.xml
+NICK=org-mode-blog
+TITLE=Org Mode Blog
+DESCRIPTION=Official Org Mode blog RSS feed
+AVATAR=
+CONTACT=
 LANG=en
+PORT=5000
+DEBUG=false
 ```
 
 4. Build and start the service:
@@ -43,10 +45,12 @@ pip install -r requirements.txt
 
 2. Set environment variables:
 ```bash
-export RSS_FEED_URL=https://xkcd.com/rss.xml
-export NICK=my-rss-feed
-export TITLE="My RSS Feed"
-export DESCRIPTION="My favorite RSS feed in Org Social format"
+export RSS_FEED_URL=https://blog.orgmode.org/feed.xml
+export NICK=org-mode-blog
+export TITLE="Org Mode Blog"
+export DESCRIPTION="Official Org Mode blog RSS feed"
+export PORT=5000
+export DEBUG=false
 ```
 
 3. Run the application:
@@ -67,8 +71,10 @@ All configuration is done via environment variables:
 | `AVATAR` | No | - | Profile avatar URL (falls back to RSS feed image) |
 | `CONTACT` | No | - | Contact information (email, XMPP, Matrix, etc.) |
 | `LANG` | No | `en` | Default language for posts |
+| `PORT` | No | `5000` | Port where the service listens |
+| `DEBUG` | No | `false` | Enable debug mode (`true`/`false`) |
 
-## Usagep
+## Usage
 
 ### Get the Org Social feed
 
