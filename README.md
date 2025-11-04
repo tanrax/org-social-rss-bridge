@@ -1,7 +1,8 @@
 # Org Social RSS Bridge
 
-A Flask-based bridge that converts RSS/Atom feeds into [Org Social](https://github.com/tanrax/org-social) format. This allows you to follow any RSS feed as if it were an Org Social account.
+A simple bridge that converts RSS/Atom feeds into [Org Social](https://github.com/tanrax/org-social) format. This allows you to follow any RSS feed as if it were an Org Social account.
 
+## Quick Start
 
 ### Using Docker Compose (Recommended)
 
@@ -73,6 +74,7 @@ All configuration is done via environment variables:
 | `LANG` | No | `en` | Default language for posts |
 | `PORT` | No | `5000` | Port where the service listens |
 | `DEBUG` | No | `false` | Enable debug mode (`true`/`false`) |
+| `CACHE_TIMEOUT` | No | `300` | Cache timeout in seconds (5 minutes default) |
 
 ## Usage
 

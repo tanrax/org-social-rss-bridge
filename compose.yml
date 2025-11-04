@@ -13,4 +13,5 @@ services:
       - LANG=${LANG:-en}
       - PORT=${PORT:-5000}
       - DEBUG=${DEBUG:-false}
+      - CACHE_TIMEOUT=${CACHE_TIMEOUT:-300}
     restart: unless-stopped

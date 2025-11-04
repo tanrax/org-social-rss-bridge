@@ -1,5 +1,6 @@
 import os
 from flask import Flask, Response
+from flask_caching import Cache
 import feedparser
 from datetime import datetime
 from html2text import html2text
@@ -17,6 +18,12 @@ CONTACT = os.getenv('CONTACT', '')
 LANG = os.getenv('LANG', 'en')
 PORT = int(os.getenv('PORT', '5000'))
 DEBUG = os.getenv('DEBUG', 'false').lower() in ('true', '1', 'yes')
+CACHE_TIMEOUT = int(os.getenv('CACHE_TIMEOUT', '300'))  # 5 minutes default
+
+# Configure cache
+app.config['CACHE_TYPE'] = 'SimpleCache'
+app.config['CACHE_DEFAULT_TIMEOUT'] = CACHE_TIMEOUT
+cache = Cache(app)
 
 
 def html_to_org(html_content):
@@ -140,6 +147,7 @@ def parse_rss_to_org(feed_url):
 
 
 @app.route('/')
+@cache.cached()
 def index():
     """Main endpoint that returns the Org Social file"""
     org_content = parse_rss_to_org(RSS_FEED_URL)
