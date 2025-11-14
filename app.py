@@ -93,7 +93,6 @@ def parse_rss_to_org(feed_url):
 
     org_content.append("")
     org_content.append("* Posts")
-    org_content.append("")
 
     # Process each entry (reverse order: oldest to newest)
     for entry in reversed(feed.entries):
