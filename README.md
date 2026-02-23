@@ -92,3 +92,7 @@ Check if the service is running:
 ```bash
 curl http://localhost:5000/health
 ```
+
+## Contributing
+
+Contributions are welcome! Please see the [contribution guidelines](https://git.andros.dev/andros/contribute) for instructions on how to submit issues or pull requests.
